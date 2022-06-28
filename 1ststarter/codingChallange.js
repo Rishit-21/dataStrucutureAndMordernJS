@@ -101,4 +101,35 @@ for(const odd of odds){
         
     }
     console.log(scores)
+
+    const gameEvents = new Map([
+        [17, '⚽ GOAL'],
+        [36, '🔁 Substitution'],
+        [47, '⚽ GOAL'],
+        [61, '🔁 Substitution'],
+        [64, '🔶 Yellow card'],
+        [69, '🔴 Red card'],
+        [70, '🔁 Substitution'],
+        [72, '🔁 Substitution'],
+        [76, '⚽ GOAL'],
+        [80, '⚽ GOAL'],
+        [92, '🔶 Yellow card'],
+        ]);
+
+        // const eventSet = new Set(gameEvents.values())
+        // console.log(eventSet)
+
+        const event =[...new Set(gameEvents.values())]
+        console.log(event)
+
+        gameEvents.delete(64);
+        console.log(gameEvents);
+
+        console.log(`An event happend on average ,every ${90/gameEvents.size} minutes`)
+        // const ge =gameEvents.keys()
+
+        for(const [time,el] of gameEvents.entries()){
+            const outPut = time<45?console.log(`[First Half] ${time}:${el}`):console.log(`[Second Half] ${time}:${el}`)
+        }
+
    

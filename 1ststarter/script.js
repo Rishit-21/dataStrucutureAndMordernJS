@@ -313,3 +313,94 @@ for (const [key,{open,close}] of entries){
     console.log(`On ${key} we open at ${open} and close at ${close}`)
 }
 
+const orderSet = new Set(['Pasta','Pizza','Rossitto','Pasta','Pizza',]);
+
+console.log(orderSet);
+
+console.log(new Set('Rishit'));
+
+console.log(orderSet.size);
+console.log(orderSet.has('Pizza'));
+orderSet.add('GarlicBread');
+orderSet.add('GarlicBread');
+
+orderSet.delete('Rossitto')
+console.log(orderSet);
+
+for(const order of orderSet){
+    console.log(order);
+}
+
+const staff = ['Waiter','Chef','Manager','Chef','Waiter'];
+
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+
+const rest = new Map;
+rest.set('name','Classico Italiano');
+rest.set(1,'Frienze,Italy');
+console.log(rest.set(2,'Lisbon,portugal'));
+
+rest.set('categoies',["Italian", "Pizzeria", "Vegetarian", "Organic"])
+.set('open',11)
+.set('close',23)
+.set(true,'we are open')
+.set(false,'We are closed');
+console.log(rest)
+
+console.log(rest.get('name'))
+console.log(rest.get(true))
+ 
+
+const time = 24;
+console.log(rest.get(time>rest.get('open') && time<rest.get('close')))
+
+console.log(rest.has('categories'));
+rest.delete(2) 
+rest.set(document.querySelector('h1'),'heading')
+const arr = [1,2];
+rest.set(arr,'test');
+console.log(rest.size);
+
+console.log(rest.get(arr));
+
+const question =new Map([
+    ['question','What is the best programing language in the world '],
+    [1,'c'],
+    [2,'java'],
+    [3,'javaScript'],
+    ['correct',3],
+    [true,'Correct'],
+    [false,'Try Again'],
+])
+
+console.log(question.get('question'));
+for(const [key,value] of question){
+    if(typeof key ==='number'){
+        console.log(`Answer ${key}: ${value}`);
+    }
+}
+// const answer = Number(prompt('Your answer'));
+// console.log(answer);
+
+// console.log(question.get(question.get('correct')===answer));
+
+// if(answer === (question.get('correct'))){
+//     console.log(question.get(true));
+// }
+// else{
+//     console.log(question.get(false));
+// }
+
+console.log([...question]);
+console.log(...question.keys());
+console.log([...question.values()]);
+
+
+
+
+
+
+
+
+
