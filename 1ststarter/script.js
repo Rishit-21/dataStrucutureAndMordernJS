@@ -3,6 +3,21 @@
 // Data needed for a later exercise
 const flights = "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
 
+const openingHours = {
+    thu: {
+        open: 12,
+        close: 22,
+    },
+    fri: {
+        open: 11,
+        close: 23,
+    },
+    sat: {
+        open: 0, // Open 24 hours
+        close: 24,
+    },
+}
+
 // Data needed for first part of the section
 const restaurant = {
     name: "Classico Italiano",
@@ -11,36 +26,26 @@ const restaurant = {
     starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
     mainMenu: ["Pizza", "Pasta", "Risotto"],
 
-    order: function (starterIndex, mainIndex) {
+openingHours,
+
+
+    order(starterIndex, mainIndex) {
         return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
     },
-    orderDelivery: function ({ starterIndex = 1, mainIndex = 0, time = "20:00", address }) {
+    orderDelivery ({ starterIndex = 1, mainIndex = 0, time = "20:00", address }) {
         console.log(`order recived! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be deliverd to ${address} at ${time}`);
     },
 
-    orderPasta: function (ing1, ing2, ing3) {
+    orderPasta (ing1, ing2, ing3) {
         console.log(`here is your declicious pasta with ${ing1},${ing2},${ing3}`);
     },
 
-    orderPizza: function(mainIngrident,...otherIngridents){
+    orderPizza(mainIngrident,...otherIngridents){
       console.log(mainIngrident);
       console.log(otherIngridents);
     },
 
-    openingHours: {
-        thu: {
-            open: 12,
-            close: 22,
-        },
-        fri: {
-            open: 11,
-            close: 23,
-        },
-        sat: {
-            open: 0, // Open 24 hours
-            close: 24,
-        },
-    },
+
 };
 
 restaurant.orderDelivery({
@@ -118,7 +123,7 @@ console.log(main, secondary);
 const [starter, mainCourse] = restaurant.order(2, 0);
 console.log(starter, mainCourse);
 
-const { name, openingHours, categories } = restaurant;
+const { name, openHours, categories } = restaurant;
 console.log(name, openingHours, categories);
 
 const { name: restaurantName, openingHours: hours, categories: tags } = restaurant;
@@ -170,3 +175,141 @@ const str = "jonas";
 const letters = [...str, "", "s."];
 console.log(letters);
 console.log(...str);
+
+const rest1 = {
+    name: 'Capri',
+    // numGuests: 20,
+    numGuests: 0,
+  };
+  
+  const rest2 = {
+    name: 'La Piazza',
+    owner: 'Giovanni Rossi',
+  };
+
+//OR assignment operator
+rest1.numGuests = rest1.numGuests || 10;
+rest2.numGuests = rest2.numGuests || 10;
+console.log(rest1);
+console.log(rest2);
+
+console.log('------')
+rest1.numGuests ||= 10;
+rest2.numGuests ||= 10;
+console.log(rest1);
+console.log(rest2);
+
+console.log('--nullish operator')
+
+// nullish assignment operator (null or undefined)
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+console.log(rest1);
+console.log(rest2);
+
+console.log('--------');
+// AND assignment operator
+rest1.owner = rest1.owner && '<ANONYMOUS>';
+rest2.owner = rest2.owner && '<ANONYMOUS>';
+
+console.log(rest1);
+console.log(rest2);
+
+console.log('--------')
+
+rest1.owner &&= '<ANONYMOUS>';
+rest2.owner &&= '<ANONYMOUS>';
+
+console.log(rest1);
+console.log(rest2);
+
+
+///////////////////////////////////////
+// The Nullish Coalescing Operator
+restaurant.numGuests = 0;
+const guests = restaurant.numGuests || 10;
+console.log(guests);
+
+// Nullish: null and undefined (NOT 0 or '')
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
+
+///////////////////////////////////////
+// Short Circuiting (&& and ||)
+
+console.log('---- OR ----');
+// Use ANY data type, return ANY data type, short-circuiting
+console.log(3 || 'Jonas');
+console.log('' || 'Jonas');
+console.log(true || 0);
+console.log(undefined || null);
+
+console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+
+restaurant.numGuests = 0;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+console.log('---- AND ----');
+console.log(0 && 'Jonas');
+console.log(7 && 'Jonas');
+
+console.log('Hello' && 23 && null && 'jonas');
+
+// Practical example
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'spinach');
+}
+
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+
+const menu3 = [...restaurant.starterMenu,...restaurant.mainMenu];
+
+for(const item of menu3) console.log(item);
+for(const [i,el] of menu3.entries()) console.log(`${i + 1}: ${el}`);
+
+if(restaurant.openingHours && restaurant.openingHours.mon){
+    console.log(restaurant.openingHours.frimon.open);
+
+    
+}
+console.log(restaurant.openingHours.mon?.open);
+
+const days =['mon','tue','wed','thur','fri','sat','sun'];
+
+for(const day of days){
+    const open = restaurant.openingHours[day]?.open ?? 'closed';
+
+    console.log(`on ${day},we are open at ${open}`);
+}
+
+console.log(restaurant.order?.(0,1) ?? 'method does not exist');
+console.log(restaurant.orderRissoto?.(0,1) ?? 'method does not exist');
+
+const users= [{name:'jonas',email:'hy@rk.io'}];
+
+console.log(users[0]?.name ?? 'user array emopty')
+
+const properties = Object.keys(openingHours);
+console.log(properties);
+
+ let openStr = `we are open on ${properties.length} days:`;
+
+for (const day of properties){
+    openStr += `${day},`;
+}
+
+console.log(openStr);
+
+const values = Object.values(openingHours)
+console.log(values);
+const entries = Object.entries(openingHours)
+console.log(entries);
+
+for (const [key,{open,close}] of entries){
+    console.log(`On ${key} we open at ${open} and close at ${close}`)
+}
+
