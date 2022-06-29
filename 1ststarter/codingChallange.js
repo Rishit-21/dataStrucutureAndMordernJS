@@ -148,7 +148,7 @@ let btn = document.querySelector('button')
 
     //console.log(rows)
 
-    for(const [i,row] of   rows.entries()){
+    for(let row of   rows){
         //console.log(row)
         //const i = row.lastIndexOf('_')
         //console.log(i)
@@ -162,29 +162,87 @@ let btn = document.querySelector('button')
     //     let [first,second]= row.toLowerCase().trim().split('_');
     //    let t= [first,second.replace(second[0],second[0].toUpperCase())]
     //    console.log(`${t.join('').padEnd(20)}${'✔'.repeat(i+1)}`)
+    let t=[];
+    let t1=[];
+    if(row.includes('_')){
+        var[first,second]=row.split('_');
 
-        if(row.includes('_')){
-            const id = row.indexOf('_')
-            let t= row.replace('_',' ')
-           // console.log(t)
-            let [first,second]= t.toLowerCase().trim().split(' ');
-            let t1=[];
-            //console.log(first,second)
-            for(let i=0; i<first.length; i+=2){
-                 first= first.replace(first[i],first[i].toUpperCase())
+    }
+    else if(row.includes(' ')){
+        [first,second]=row.split(' ');
+    }
+    if(first[0].toUpperCase()!==first[0]){
+        for(let i=0; i<first.length;i++){
+               
+                  if(i%2==0){
+                    t.push(first.charAt(i).toUpperCase())
+                  }
+                  else{
+                    t.push(first.charAt(i))
+                  }
+                }
+                   
+                    //row+=2;
+    
                 
-                 console.log(first)
-            }
-         
-           
-
+                for(let i=0; i<second.length;i++){
+          
+                    if(i%2==0){
+                      t1.push(second.charAt(i).toUpperCase())
+                    }
+                    else{
+                      t1.push(second.charAt(i))
+                    }
+    
             
+                
+            }
+
+            first=t.join('')
+            second=t1.join('')
+            let final = [first,second];
+            console.log(final.join(' '))
         }
+        else if(first[0].toUpperCase()===first[0]){
+            for(let i=0; i<first.length;i++){
+               
+                if(i%2==0){
+                  t.push(first.charAt(i).toLowerCase())
+                }
+                else{
+                  t.push(first.charAt(i).toUpperCase())
+                }
+              }
+                 
+                  //row+=2;
+  
+              
+              for(let i=0; i<second.length;i++){
+        
+                  if(i%2==0){
+                    t1.push(second.charAt(i).toLowerCase())
+                  }
+                  else{
+                    t1.push(second.charAt(i).toUpperCase())
+                  }
+          
+              
+          }
+
+          first=t.join('')
+          second=t1.join('')
+          let final = [first,second];
+          console.log(final.join('_'))
+        }
+
+        
+
+    }
 
 
        
      //console.log(l)   
-    }
+    
     //console.log(text);
 
     
