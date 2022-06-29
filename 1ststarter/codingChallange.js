@@ -146,7 +146,7 @@ let btn = document.querySelector('button')
     const rows = text.split('\n');
     let l= [];
 
-    console.log(rows)
+    //console.log(rows)
 
     for(const [i,row] of   rows.entries()){
         //console.log(row)
@@ -159,13 +159,33 @@ let btn = document.querySelector('button')
 
         // l.push(t.replace(t[it],t[it].toUpperCase()))
 
-        let [first,second]= row.toLowerCase().trim().split('_');
-       let t= [first,second.replace(second[0],second[0].toUpperCase())]
-       console.log(`${t.join('').padEnd(20)}${'✔'.repeat(i+1)}`)
+    //     let [first,second]= row.toLowerCase().trim().split('_');
+    //    let t= [first,second.replace(second[0],second[0].toUpperCase())]
+    //    console.log(`${t.join('').padEnd(20)}${'✔'.repeat(i+1)}`)
+
+        if(row.includes('_')){
+            const id = row.indexOf('_')
+            let t= row.replace('_',' ')
+           // console.log(t)
+            let [first,second]= t.toLowerCase().trim().split(' ');
+            let t1=[];
+            //console.log(first,second)
+            for(let i=0; i<first.length; i+=2){
+                 first= first.replace(first[i],first[i].toUpperCase())
+                
+                 console.log(first)
+            }
+         
+           
+
+            
+        }
 
 
        
      //console.log(l)   
     }
     //console.log(text);
+
+    
    })
