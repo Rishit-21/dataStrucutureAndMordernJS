@@ -164,86 +164,110 @@ let btn = document.querySelector('button')
     //    console.log(`${t.join('').padEnd(20)}${'✔'.repeat(i+1)}`)
     let t=[];
     let t1=[];
+    let text2 = function(first,second){
+        if(first[0].toUpperCase()!==first[0]){
+            for(let i=0; i<first.length;i++){
+                   
+                      if(i%2==0){
+                        t.push(first.charAt(i).toUpperCase())
+                      }
+                      else{
+                        t.push(first.charAt(i))
+                      }
+                    }
+                       
+                        //row+=2;
+        
+                    
+                    for(let i=0; i<second.length;i++){
+              
+                        if(i%2==0){
+                          t1.push(second.charAt(i).toUpperCase())
+                        }
+                        else{
+                          t1.push(second.charAt(i))
+                        }
+        
+                
+                    
+                }
+    
+                first=t.join('')
+                second=t1.join('')
+                let final = [first,second];
+                console.log(final.join(' '))
+            }
+            else if(first[0].toUpperCase()===first[0]){
+                for(let i=0; i<first.length;i++){
+                   
+                    if(i%2==0){
+                      t.push(first.charAt(i).toLowerCase())
+                    }
+                    else{
+                      t.push(first.charAt(i).toUpperCase())
+                    }
+                  }
+                     
+                      //row+=2;
+      
+                  
+                  for(let i=0; i<second.length;i++){
+            
+                      if(i%2==0){
+                        t1.push(second.charAt(i).toLowerCase())
+                      }
+                      else{
+                        t1.push(second.charAt(i).toUpperCase())
+                      }
+              
+                  
+              }
+    
+              first=t.join('')
+              second=t1.join('')
+              let final = [first,second];
+              console.log(final.join('_'))
+            }
+    }
     if(row.includes('_')){
         var[first,second]=row.split('_');
+        text2(first,second);
 
     }
     else if(row.includes(' ')){
         [first,second]=row.split(' ');
+        text2(first,second);
     }
-    if(first[0].toUpperCase()!==first[0]){
-        for(let i=0; i<first.length;i++){
-               
-                  if(i%2==0){
-                    t.push(first.charAt(i).toUpperCase())
-                  }
-                  else{
-                    t.push(first.charAt(i))
-                  }
-                }
-                   
-                    //row+=2;
-    
-                
-                for(let i=0; i<second.length;i++){
-          
-                    if(i%2==0){
-                      t1.push(second.charAt(i).toUpperCase())
-                    }
-                    else{
-                      t1.push(second.charAt(i))
-                    }
-    
-            
-                
-            }
-
-            first=t.join('')
-            second=t1.join('')
-            let final = [first,second];
-            console.log(final.join(' '))
-        }
-        else if(first[0].toUpperCase()===first[0]){
+    else{
+        let first=row
+        if(first[0].toUpperCase()!==first[0]){
             for(let i=0; i<first.length;i++){
-               
-                if(i%2==0){
-                  t.push(first.charAt(i).toLowerCase())
+                   
+                      if(i%2==0){
+                        t.push(first.charAt(i).toUpperCase())
+                      }
+                      else{
+                        t.push(first.charAt(i))
+                      }
+                    }
+                    first=t.join('')
+                    console.log(first);
                 }
-                else{
-                  t.push(first.charAt(i).toUpperCase())
-                }
-              }
-                 
-                  //row+=2;
-  
-              
-              for(let i=0; i<second.length;i++){
-        
-                  if(i%2==0){
-                    t1.push(second.charAt(i).toLowerCase())
-                  }
-                  else{
-                    t1.push(second.charAt(i).toUpperCase())
-                  }
-          
-              
-          }
-
-          first=t.join('')
-          second=t1.join('')
-          let final = [first,second];
-          console.log(final.join('_'))
-        }
-
-        
-
+                else if(first[0].toUpperCase()===first[0]){
+                    for(let i=0; i<first.length;i++){
+                       
+                        if(i%2==0){
+                          t.push(first.charAt(i).toLowerCase())
+                        }
+                        else{
+                          t.push(first.charAt(i).toUpperCase())
+                        }
+                      }
+                      first=t.join('')
+                      console.log(first);
+                }   
     }
-
-
-       
+    }
      //console.log(l)   
-    
     //console.log(text);
-
-    
    })
