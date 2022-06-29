@@ -101,7 +101,7 @@ for(const odd of odds){
         
     }
     console.log(scores)
-
+///// coding 3
     const gameEvents = new Map([
         [17, '⚽ GOAL'],
         [36, '🔁 Substitution'],
@@ -132,4 +132,40 @@ for(const odd of odds){
             const outPut = time<45?console.log(`[First Half] ${time}:${el}`):console.log(`[Second Half] ${time}:${el}`)
         }
 
+   ///coding  4
+
+   document.body.append(document.createElement('textarea'));
+   document.body.append(document.createElement('button'));
+
+let btn = document.querySelector('button')
+
    
+
+   btn.addEventListener('click',function(){
+    let text =document.querySelector('textarea').value;
+    const rows = text.split('\n');
+    let l= [];
+
+    console.log(rows)
+
+    for(const [i,row] of   rows.entries()){
+        //console.log(row)
+        //const i = row.lastIndexOf('_')
+        //console.log(i)
+        // let t= row.split('_').join('').toLowerCase();
+        // console.log(t)
+        // let it=t.lastIndexOf(t[i])
+        // console.log(it)
+
+        // l.push(t.replace(t[it],t[it].toUpperCase()))
+
+        let [first,second]= row.toLowerCase().trim().split('_');
+       let t= [first,second.replace(second[0],second[0].toUpperCase())]
+       console.log(`${t.join('').padEnd(20)}${'✔'.repeat(i+1)}`)
+
+
+       
+     //console.log(l)   
+    }
+    //console.log(text);
+   })

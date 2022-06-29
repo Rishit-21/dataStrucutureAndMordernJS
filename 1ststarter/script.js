@@ -1,7 +1,5 @@
 "use strict";
 
-// Data needed for a later exercise
-const flights = "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
 
 const openingHours = {
     thu: {
@@ -396,11 +394,155 @@ console.log([...question]);
 console.log(...question.keys());
 console.log([...question.values()]);
 
+const airlines ='TAP Air Portugal';
+const plan ='A320';
+
+console.log(plan[0]);
+console.log(plan[1]);
+console.log(plan[2]);
+console.log('B737'[0]);
+
+console.log(airlines.length);
+
+console.log('B737'.length);
+
+console.log(airlines.indexOf('r'));
+console.log(airlines.lastIndexOf(('r')));
+console.log(airlines.indexOf('Portugal'));
+
+console.log(airlines.slice(5))
+console.log(airlines.slice(4,7))
+
+console.log(airlines.slice(0,airlines.indexOf(' ')));
+console.log(airlines.slice(airlines.lastIndexOf(' ')+1))
+
+console.log(airlines.slice(-2))
+console.log(airlines.slice(1,-1))
+
+const checkMiddleSeat= function(seat){
+    const s =seat.slice(-1);
+    if(s==='B'||s==='E'){
+        console.log('You got Middle seat');
+    }
+    else{
+        console.log('you are lucky');
+    }
+}
+checkMiddleSeat('11B');
+checkMiddleSeat('23C')
+checkMiddleSeat('3E')
+
+console.log(airlines.toLowerCase());
+console.log(airlines.toUpperCase());
+
+const passenger = 'jOnAs';
+const passangerLower= passenger.toLocaleLowerCase();
+
+const passangercorrect = passangerLower[0].toUpperCase() + passangerLower.slice(1);
+
+console.log(passangercorrect);
+
+const email = 'hello@jonas.io';
+const loginEmail ='Hello@Jonas.Io';
+
+const lowerEmail = loginEmail.toLowerCase();
+const trimmedEmail = lowerEmail.trim();
+
+console.log(trimmedEmail);
+
+const normalizedEmail = loginEmail.toLowerCase().trim();
+
+console.log(normalizedEmail);
+console.log(email === normalizedEmail);
+
+const priceGB = '288,27 E';
+const priceUS= priceGB.replace('E','$').replace(',','.');
+
+console.log(priceUS);
+
+const announcement = 'All passanger come to boarding door 23.boarding door 23';
+
+console.log(announcement.replaceAll('door','gate'));
+
+const plane = 'Airbus A320neo';
+console.log(plane.includes('A320'));
+console.log(plane.includes('Boieng'));
+console.log(plane.startsWith('Air'));
+
+if(plane.startsWith('Airbus') && plane.endsWith('neo')){
+    console.log('Part of NEW AIRBUS family');
+}
+
+const checkbaggage = function(items){
+    const baggage = items.toLowerCase();
+    if(baggage.includes('knife') || baggage.includes('gun')){
+        console.log("you are not wellcome")
+    }
+    else{
+        console.log('Welcome')
+    }
+}
+
+checkbaggage('I have a laptop, some Food and a pocket Knife');
+checkbaggage('Socks and camera');
+checkbaggage('Got some sncaks and a gun for protection');
+
+console.log('a+very+nice+string'.split('+'));
+console.log('Rishit kalyani'.split(' '));
+
+const [firstName,lastName] = 'Rishit Kalyani'.split(' ');
+
+const newName = ['Mr.',firstName,lastName.toUpperCase()].join('');
+console.log(newName);
+
+const capitaliesName = function(name){
+    let lowerName = name.split(' ')
+    console.log(lowerName);
+   let  correctName = [];
+   for(const word of lowerName){
+    //   correctName.push(word[0].toUpperCase()+word.slice(1))
+
+    correctName.push(word.replace(word[0],word[0].toUpperCase()))
+   }
+    console.log(correctName.join(' '));
+
+}
+
+capitaliesName('jessica ann smith davis');
+capitaliesName('rishit kalyani');
+
+const message = 'Go to gate 23!';
+console.log(message.padStart(20,'+').padEnd(30,'+'));
+console.log('Jonas'.padStart(20,'+').padEnd(30,'+'));
+
+const maskCreditCard = function(number){
+    const str = number + '';
+    const last = str.slice(-4);
+    return last.padStart(str.length,'*');
+}
+
+console.log(maskCreditCard(5824842318912))
+console.log(maskCreditCard('582484231891215644156465'))
+console.log(maskCreditCard(582484231891256484))
+
+const message2 = 'bad weather... All Departures Delayed... ';
+
+console.log(message2.repeat(5));
+
+const planeInLine = function(n){
+    console.log(`There are ${n} planes in line ${'✈'.repeat(n)}`);
+}
+
+planeInLine(5);
+planeInLine(3);
+planeInLine(12);
 
 
 
+const flights = "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
 
-
-
-
-
+for(const flight of flights.split('+')){
+    const [type,from,to,time]=flight.split(';');
+    const out= `${type.startsWith('_Delayed')?'🛑': ''}${type.replaceAll('_',' ')} ${from.slice(0,3).toUpperCase()} ${to.slice(0,3).toUpperCase()} (${time.replace(':','h')})`.padStart(35);
+    console.log(out);
+}
