@@ -145,6 +145,9 @@ let btn = document.querySelector('button')
     let text =document.querySelector('textarea').value;
     const rows = text.split('\n');
     let l= [];
+    let t=[]
+   
+    let j=-1;
 
     //console.log(rows)
 
@@ -162,111 +165,157 @@ let btn = document.querySelector('button')
     //     let [first,second]= row.toLowerCase().trim().split('_');
     //    let t= [first,second.replace(second[0],second[0].toUpperCase())]
     //    console.log(`${t.join('').padEnd(20)}${'✔'.repeat(i+1)}`)
-    let t=[];
-    let t1=[];
-    let text2 = function(first,second){
-        if(first[0].toUpperCase()!==first[0]){
-            for(let i=0; i<first.length;i++){
+    // let t=[];
+    // let t1=[];
+    // let text2 = function(first,second){
+    //     if(first[0].toUpperCase()!==first[0]){
+    //         for(let i=0; i<first.length;i++){
                    
-                      if(i%2==0){
-                        t.push(first.charAt(i).toUpperCase())
-                      }
-                      else{
-                        t.push(first.charAt(i))
-                      }
-                    }
+    //                   if(i%2==0){
+    //                     t.push(first.charAt(i).toUpperCase())
+    //                   }
+    //                   else{
+    //                     t.push(first.charAt(i))
+    //                   }
+    //                 }
                        
-                        //row+=2;
+    //                     //row+=2;
         
                     
-                    for(let i=0; i<second.length;i++){
+    //                 for(let i=0; i<second.length;i++){
               
-                        if(i%2==0){
-                          t1.push(second.charAt(i).toUpperCase())
-                        }
-                        else{
-                          t1.push(second.charAt(i))
-                        }
+    //                     if(i%2==0){
+    //                       t1.push(second.charAt(i).toUpperCase())
+    //                     }
+    //                     else{
+    //                       t1.push(second.charAt(i))
+    //                     }
         
                 
                     
-                }
+    //             }
     
-                first=t.join('')
-                second=t1.join('')
-                let final = [first,second];
-                console.log(final.join(' '))
-            }
-            else if(first[0].toUpperCase()===first[0]){
-                for(let i=0; i<first.length;i++){
+    //             first=t.join('')
+    //             second=t1.join('')
+    //             let final = [first,second];
+    //             console.log(final.join(' '))
+    //         }
+    //         else if(first[0].toUpperCase()===first[0]){
+    //             for(let i=0; i<first.length;i++){
                    
-                    if(i%2==0){
-                      t.push(first.charAt(i).toLowerCase())
-                    }
-                    else{
-                      t.push(first.charAt(i).toUpperCase())
-                    }
-                  }
+    //                 if(i%2==0){
+    //                   t.push(first.charAt(i).toLowerCase())
+    //                 }
+    //                 else{
+    //                   t.push(first.charAt(i).toUpperCase())
+    //                 }
+    //               }
                      
-                      //row+=2;
+    //                   //row+=2;
       
                   
-                  for(let i=0; i<second.length;i++){
+    //               for(let i=0; i<second.length;i++){
             
-                      if(i%2==0){
-                        t1.push(second.charAt(i).toLowerCase())
-                      }
-                      else{
-                        t1.push(second.charAt(i).toUpperCase())
-                      }
+    //                   if(i%2==0){
+    //                     t1.push(second.charAt(i).toLowerCase())
+    //                   }
+    //                   else{
+    //                     t1.push(second.charAt(i).toUpperCase())
+    //                   }
               
                   
-              }
+    //           }
     
-              first=t.join('')
-              second=t1.join('')
-              let final = [first,second];
-              console.log(final.join('_'))
+    //           first=t.join('')
+    //           second=t1.join('')
+    //           let final = [first,second];
+    //           console.log(final.join('_'))
+    //         }
+    
+      let final;
+      l=row.split('');
+      let it = l.lastIndexOf(' ');
+      let it1 = l.lastIndexOf('_')
+      for(let i=0;i<l.length;i++){
+        //j++;
+        if((i!==it && i!==it1) && (i<it && i<it1)){
+          if(l[0].toUpperCase()===l[0]){
+            if(i%2==0){
+              t.push(l[i].toLowerCase())
             }
-    }
-    if(row.includes('_')){
-        var[first,second]=row.split('_');
-        text2(first,second);
+            else{
+              t.push(l[i].toUpperCase());
+            }
+          }
+          else{
+            if(i%2==0){
+              t.push(l[i].toUpperCase())
+            }
+            else{
+              t.push(l[i])
+            }
+          }
+        }
+        else if(l[i]===' ' || l[i]==='_'){
+          if(i=== it){
+            t.push('_')
+          }
+          else{
+            t.push(' ');
+          }
+        }
+        else{
+          if(i==(it+1)||i==(it1+1)){
+            j=-1;
+          }
+          j++;
+          if(it<=i && it1>=i){
+          if(l[it+1].toUpperCase()===l[it+1]){
 
-    }
-    else if(row.includes(' ')){
-        [first,second]=row.split(' ');
-        text2(first,second);
-    }
-    else{
-        let first=row
-        if(first[0].toUpperCase()!==first[0]){
-            for(let i=0; i<first.length;i++){
-                   
-                      if(i%2==0){
-                        t.push(first.charAt(i).toUpperCase())
-                      }
-                      else{
-                        t.push(first.charAt(i))
-                      }
-                    }
-                    first=t.join('')
-                    console.log(first);
-                }
-                else if(first[0].toUpperCase()===first[0]){
-                    for(let i=0; i<first.length;i++){
-                       
-                        if(i%2==0){
-                          t.push(first.charAt(i).toLowerCase())
-                        }
-                        else{
-                          t.push(first.charAt(i).toUpperCase())
-                        }
-                      }
-                      first=t.join('')
-                      console.log(first);
-                }   
-    }
+            if(j%2==0){
+              t.push(l[i].toLowerCase())
+            }
+            else{
+              t.push(l[i].toUpperCase());
+            }
+          }
+          else{
+            if(j%2==0){
+              t.push(l[i].toUpperCase())
+            }
+            else{
+              t.push(l[i])
+            }
+          }
+          }
+          else if(it1<=i){
+            if(l[it1+1].toUpperCase()===l[it1+1]){
+              if(j%2==0){
+                t.push(l[i].toLowerCase())
+              }
+              else{
+                t.push(l[i].toUpperCase());
+              }
+
+            }
+            else{
+              if(j%2==0){
+                t.push(l[i].toUpperCase())
+              }
+              else{
+                t.push(l[i])
+              }
+            }
+
+          }
+        }
+      }
+      final=t.join('')
+      for(let c=t.length; c>=0;c--){
+        t.pop();
+      }
+
+      console.log(final)
     }
      //console.log(l)   
     //console.log(text);
